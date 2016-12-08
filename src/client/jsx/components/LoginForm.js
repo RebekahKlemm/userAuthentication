@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 class LoginForm extends Component {
   constructor(props) {
@@ -10,15 +11,22 @@ class LoginForm extends Component {
     console.log("You are logging in a user");
   }
 
+  handleSubmit(e){
+    e.preventDefault();
+      axios.post('/api/users/login', {email: e.target.email.value})
+          .then(res => res.data)
+          .then(users => console.log(users))
+  }
+
   render() {
     return (
       <div className="row">
         <div className="col-md-4 col-md-offset-4">
-          <form>
+          <form onSubmit={this.handleSubmit}>
             <h1>Login</h1>
             <div className="form-group">
               <label htmlFor="exampleInputEmail1">Email address</label>
-              <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
+              <input type="email" name="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
             </div>
             <div className="form-group">
               <label htmlFor="exampleInputPassword1">Password</label>

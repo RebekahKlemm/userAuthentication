@@ -6,7 +6,6 @@ import style from '../assets/stylesheets/main.scss'; // eslint-disable-line
 import App from './components/App';
 import SignupForm from './components/SignupForm';
 import LoginForm from './components/LoginForm';
-// import LoginForm from './components/LoginForm';
 import Home from './components/Home';
 
 const rootRouter = (
